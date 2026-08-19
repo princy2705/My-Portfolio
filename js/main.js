@@ -227,6 +227,36 @@
     });
   }
 
-  const y = document.getElementById("year");
+    const y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
+
+  /**
+   * Skills Section: Category Tabs
+   */
+  function initSkillTabs() {
+    const tabBtns = document.querySelectorAll(".skill-tab-btn");
+    const panels = document.querySelectorAll(".skill-panel");
+    if (!tabBtns.length || !panels.length) return;
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.skillTab;
+
+        tabBtns.forEach((b) => {
+          b.classList.remove("is-active", "bg-lilac", "text-paper");
+          b.classList.add("bg-lilac/5", "border", "border-lilac/10", "text-lilac");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("is-active", "bg-lilac", "text-paper");
+        btn.classList.remove("bg-lilac/5", "border", "border-lilac/10", "text-lilac");
+        btn.setAttribute("aria-selected", "true");
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("hidden", panel.dataset.skillPanel !== target);
+        });
+      });
+    });
+  }
+
+  initSkillTabs();
 })();

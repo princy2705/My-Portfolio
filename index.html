@@ -256,69 +256,89 @@
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article class="glass-panel rounded-3xl p-6 reveal hover:shadow-xl transition-shadow"
-            data-testid="skill-card-languages">
-            <h3 class="font-display font-semibold text-lilac mb-4">Programming Languages</h3>
-            <ul class="flex flex-wrap gap-2">
-              <li class="skill-chip">HTML</li>
-              <li class="skill-chip">Java</li>
-              <li class="skill-chip">JavaScript</li>
-              <li class="skill-chip">Python</li>
-            </ul>
-          </article>
-          <article class="glass-panel rounded-3xl p-6 reveal reveal-delay-1 hover:shadow-xl transition-shadow"
-            data-testid="skill-card-frontend-db">
-            <h3 class="font-display font-semibold text-lilac mb-4">Frontend &amp; Databases</h3>
-            <ul class="flex flex-wrap gap-2">
-              <li class="skill-chip">HTML5</li>
-              <li class="skill-chip">CSS3</li>
-              <li class="skill-chip">Responsive Web Design</li>
-              <li class="skill-chip">Supabase</li>
-              <li class="skill-chip">MongoDB</li>
-              <li class="skill-chip">SQLite</li>
-              <li class="skill-chip">UI &amp; UX Design</li>
-            </ul>
-          </article>
-          <article class="glass-panel rounded-3xl p-6 reveal reveal-delay-2 hover:shadow-xl transition-shadow"
-            data-testid="skill-card-frameworks">
-            <h3 class="font-display font-semibold text-lilac mb-4">Frameworks &amp; Libraries</h3>
-            <ul class="flex flex-wrap gap-2">
-              <li class="skill-chip">Flask</li>
-              <li class="skill-chip">React</li>
-              <li class="skill-chip">Django</li>
-              <li class="skill-chip">Node.js</li>
-              <li class="skill-chip">Express</li>
-              <li class="skill-chip">FastAPI</li>
-            </ul>
-          </article>
-          <article class="glass-panel rounded-3xl p-6 reveal hover:shadow-xl transition-shadow"
-            data-testid="skill-card-aiml">
-            <h3 class="font-display font-semibold text-lilac mb-4">AI / Machine Learning</h3>
-            <ul class="flex flex-wrap gap-2">
-              <li class="skill-chip">Llama 3</li>
-              <li class="skill-chip">Groq LLM API</li>
-              <li class="skill-chip">Random Forest</li>
-              <li class="skill-chip">TF-IDF</li>
-              <li class="skill-chip">Scikit-learn</li>
-              <li class="skill-chip">Pandas</li>
-            </ul>
-          </article>
-          <article
-            class="glass-panel rounded-3xl p-6 sm:col-span-2 lg:col-span-2 reveal reveal-delay-1 hover:shadow-xl transition-shadow"
-            data-testid="skill-card-tools-arch">
-            <h3 class="font-display font-semibold text-lilac mb-4">Tools, Architecture &amp; Security</h3>
-            <ul class="flex flex-wrap gap-2">
-              <li class="skill-chip">Git</li>
-              <li class="skill-chip">GitHub</li>
-              <li class="skill-chip">VS Code</li>
-              <li class="skill-chip">Browser Developer Tools</li>
-              <li class="skill-chip">REST API Integration</li>
-              <li class="skill-chip">Microservices Architecture</li>
-              <li class="skill-chip">Authentication &amp; Security</li>
-            </ul>
-          </article>
-        </div>
+        <!-- Tab buttons -->
+<div class="flex overflow-x-auto sm:overflow-visible sm:flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-8 hide-scrollbar px-1"
+     role="tablist" aria-label="Skill categories" data-testid="skills-tablist">
+  <button type="button" class="skill-tab-btn is-active shrink-0 px-4 sm:px-5 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all bg-lilac text-paper"
+    data-skill-tab="languages" role="tab" aria-selected="true" data-testid="skill-tab-languages">
+    Languages
+  </button>
+  <button type="button" class="skill-tab-btn shrink-0 px-4 sm:px-5 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all bg-lilac/5 border border-lilac/10 text-lilac hover:bg-lilac/10"
+    data-skill-tab="frontend" role="tab" aria-selected="false" data-testid="skill-tab-frontend">
+    Frontend &amp; DB
+  </button>
+  <button type="button" class="skill-tab-btn shrink-0 px-4 sm:px-5 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all bg-lilac/5 border border-lilac/10 text-lilac hover:bg-lilac/10"
+    data-skill-tab="frameworks" role="tab" aria-selected="false" data-testid="skill-tab-frameworks">
+    Frameworks
+  </button>
+  <button type="button" class="skill-tab-btn shrink-0 px-4 sm:px-5 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all bg-lilac/5 border border-lilac/10 text-lilac hover:bg-lilac/10"
+    data-skill-tab="aiml" role="tab" aria-selected="false" data-testid="skill-tab-aiml">
+    AI / ML
+  </button>
+  <button type="button" class="skill-tab-btn shrink-0 px-4 sm:px-5 py-2.5 rounded-2xl text-sm font-semibold whitespace-nowrap transition-all bg-lilac/5 border border-lilac/10 text-lilac hover:bg-lilac/10"
+    data-skill-tab="tools" role="tab" aria-selected="false" data-testid="skill-tab-tools">
+    Tools &amp; Arch
+  </button>
+</div>
+
+<!-- Panel -->
+<div class="glass-panel rounded-3xl p-6 sm:p-8 min-h-[220px]" data-testid="skills-panel">
+  <div class="skill-panel" data-skill-panel="languages" role="tabpanel">
+    <h3 class="font-display font-semibold text-lilac mb-4">Programming Languages</h3>
+    <ul class="flex flex-wrap gap-2">
+      <li class="skill-chip">HTML</li>
+      <li class="skill-chip">Java</li>
+      <li class="skill-chip">JavaScript</li>
+      <li class="skill-chip">Python</li>
+    </ul>
+  </div>
+  <div class="skill-panel hidden" data-skill-panel="frontend" role="tabpanel">
+    <h3 class="font-display font-semibold text-lilac mb-4">Frontend &amp; Databases</h3>
+    <ul class="flex flex-wrap gap-2">
+      <li class="skill-chip">HTML5</li>
+      <li class="skill-chip">CSS3</li>
+      <li class="skill-chip">Responsive Web Design</li>
+      <li class="skill-chip">Supabase</li>
+      <li class="skill-chip">MongoDB</li>
+      <li class="skill-chip">SQLite</li>
+      <li class="skill-chip">UI &amp; UX Design</li>
+    </ul>
+  </div>
+  <div class="skill-panel hidden" data-skill-panel="frameworks" role="tabpanel">
+    <h3 class="font-display font-semibold text-lilac mb-4">Frameworks &amp; Libraries</h3>
+    <ul class="flex flex-wrap gap-2">
+      <li class="skill-chip">Flask</li>
+      <li class="skill-chip">React</li>
+      <li class="skill-chip">Django</li>
+      <li class="skill-chip">Node.js</li>
+      <li class="skill-chip">Express</li>
+      <li class="skill-chip">FastAPI</li>
+    </ul>
+  </div>
+  <div class="skill-panel hidden" data-skill-panel="aiml" role="tabpanel">
+    <h3 class="font-display font-semibold text-lilac mb-4">AI / Machine Learning</h3>
+    <ul class="flex flex-wrap gap-2">
+      <li class="skill-chip">Llama 3</li>
+      <li class="skill-chip">Groq LLM API</li>
+      <li class="skill-chip">Random Forest</li>
+      <li class="skill-chip">TF-IDF</li>
+      <li class="skill-chip">Scikit-learn</li>
+      <li class="skill-chip">Pandas</li>
+    </ul>
+  </div>
+  <div class="skill-panel hidden" data-skill-panel="tools" role="tabpanel">
+    <h3 class="font-display font-semibold text-lilac mb-4">Tools, Architecture &amp; Security</h3>
+    <ul class="flex flex-wrap gap-2">
+      <li class="skill-chip">Git</li>
+      <li class="skill-chip">GitHub</li>
+      <li class="skill-chip">VS Code</li>
+      <li class="skill-chip">Browser Developer Tools</li>
+      <li class="skill-chip">REST API Integration</li>
+      <li class="skill-chip">Microservices Architecture</li>
+      <li class="skill-chip">Authentication &amp; Security</li>
+    </ul>
+  </div>
+</div>
       </div>
     </section>
 
