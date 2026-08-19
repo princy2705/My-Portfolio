@@ -1981,6 +1981,9 @@ section {
 }
 
 .project-card {
+  /* Prevent cards from becoming vertical (page) snap points —
+     only snap horizontally, inside the desktop carousel. */
+  scroll-snap-align: none center;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
               opacity 0.6s ease, 
               filter 0.6s ease,

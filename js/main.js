@@ -84,12 +84,22 @@
       cards.forEach((card) => io.observe(card));
     }
 
-    // Mouse wheel horizontal scroll on desktop
+    // Mouse wheel horizontal scroll on desktop —
+    // only hijack the scroll if the carousel can actually move
+    // sideways in that direction; otherwise let the page scroll normally.
     carousel.addEventListener("wheel", (e) => {
-      if (e.deltaY !== 0) {
+      const canScrollLeft = carousel.scrollLeft > 0;
+      const canScrollRight =
+        carousel.scrollLeft < carousel.scrollWidth - carousel.clientWidth - 1;
+
+      if (
+        e.deltaY !== 0 &&
+        ((e.deltaY < 0 && canScrollLeft) || (e.deltaY > 0 && canScrollRight))
+      ) {
         carousel.scrollLeft += e.deltaY;
         e.preventDefault();
       }
+      // else: don't preventDefault — page scrolls normally
     }, { passive: false });
 
     // Click to center on desktop
@@ -210,10 +220,6 @@
 
   initMinimalSpaceHero();
 
-
-
-
-
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 
@@ -227,7 +233,7 @@
     });
   }
 
-    const y = document.getElementById("year");
+  const y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
   /**
