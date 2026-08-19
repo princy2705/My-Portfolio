@@ -536,7 +536,7 @@
 
     <!-- Contact — slate gray -->
     <section id="contact"
-      class="theme-slate-gray relative w-full min-h-screen flex items-center bg-paper text-lilac py-16 md:py-24 border-t border-lilac/15"
+      class="theme-slate-gray relative w-full min-h-screen flex items-center bg-paper text-lilac py-10 md:py-16 border-t border-lilac/15"
       data-testid="contact-section">
       <div class="section-artwork" aria-hidden="true">
         <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000" fill="none">
@@ -546,52 +546,101 @@
             stroke-dasharray="5 5" />
         </svg>
       </div>
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="max-w-3xl mx-auto text-center reveal">
-          <h2 class="font-display text-4xl font-semibold text-lilac mb-4">Contact</h2>
-          <p class="text-lilac/80 mb-10 text-lg">
-            Let&apos;s talk about full-stack engineering roles, internships, collaborations, or project ideas. Always open to a good conversation!
-          </p>
-          <div
-            class="glass-panel rounded-3xl p-5 sm:p-8 border border-lilac/10 flex flex-col sm:flex-row justify-between text-left gap-6 sm:gap-8">
-            <div class="space-y-6 flex-1">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div class="contact-grid-container reveal">
+          <!-- Left Column: Original Contact Information Card (Old Style) -->
+          <div class="flex flex-col justify-between h-full text-left">
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-lilac/10 space-y-6">
+              <h3 class="font-display text-2xl font-bold text-lilac">Get in Touch</h3>
               <div>
-                <span class="text-lilac/60 text-sm block mb-1">Email</span>
+                <span class="text-lilac/60 text-xs font-semibold uppercase tracking-wider block mb-1">Email</span>
                 <a href="mailto:princy27507@gmail.com"
                   class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all text-sm sm:text-base"
                   data-testid="contact-email">princy27507@gmail.com</a>
               </div>
               <div>
-                <span class="text-lilac/60 text-sm block mb-1">Location</span>
+                <span class="text-lilac/60 text-xs font-semibold uppercase tracking-wider block mb-1">Location</span>
                 <p class="font-medium text-lilac" data-testid="contact-location">Ahmedabad, India</p>
               </div>
-            </div>
-            <div class="space-y-6 flex-1">
               <div>
-                <span class="text-lilac/60 text-sm block mb-1">LinkedIn</span>
+                <span class="text-lilac/60 text-xs font-semibold uppercase tracking-wider block mb-1">LinkedIn</span>
                 <a href="https://www.linkedin.com/in/princcyypatel/" target="_blank" rel="noopener noreferrer"
-                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all text-sm sm:text-base"
                   data-testid="contact-linkedin">linkedin.com/in/princcyypatel</a>
               </div>
               <div>
-                <span class="text-lilac/60 text-sm block mb-1">GitHub Profile</span>
+                <span class="text-lilac/60 text-xs font-semibold uppercase tracking-wider block mb-1">GitHub Profile</span>
                 <a href="https://github.com/princy2705" target="_blank" rel="noopener noreferrer"
-                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all text-sm sm:text-base"
                   data-testid="contact-github">github.com/princy2705</a>
               </div>
             </div>
+
+            <div class="mt-6">
+              <a href="assets/docs/Princy_Patel_Resumee.pdf" download="Princy_Patel_Resumee.pdf"
+                class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
+                data-testid="contact-download-resume">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+                </svg>
+                Download Resume
+              </a>
+            </div>
           </div>
-          <div class="mt-8 flex justify-center">
-            <a href="assets/docs/Princy_Patel_Resumee.pdf" download="Princy_Patel_Resumee.pdf"
-              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
-              data-testid="contact-download-resume">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2.2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
-              </svg>
-              Download Resume
-            </a>
+
+          <!-- Right Column: Send Me a Message Form Card -->
+          <div class="contact-form-card h-full flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mb-5 text-left" data-testid="contact-form-title">
+                Send Me a Message
+              </h3>
+              
+              <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-testid="contact-form-element">
+                <!-- Web3Forms Access Key & Configuration -->
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+                <input type="hidden" name="subject" value="New Portfolio Message for Princy" />
+                
+                <!-- Name -->
+                <div class="contact-field-group">
+                  <label for="contact-name" class="contact-label">Your Name</label>
+                  <input type="text" id="contact-name" name="name" placeholder="John Doe" required class="contact-input" data-testid="contact-input-name" />
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-field-group">
+                  <label for="contact-email-input" class="contact-label">Your Email</label>
+                  <input type="email" id="contact-email-input" name="email" placeholder="john@example.com" required class="contact-input" data-testid="contact-input-email" />
+                </div>
+                
+                <!-- Subject -->
+                <div class="contact-field-group">
+                  <label for="contact-subject" class="contact-label">Subject</label>
+                  <input type="text" id="contact-subject" name="subject" placeholder="Project Inquiry / Hiring" required class="contact-input" data-testid="contact-input-subject" />
+                </div>
+                
+                <!-- Message -->
+                <div class="contact-field-group">
+                  <label for="contact-message" class="contact-label">Message</label>
+                  <textarea id="contact-message" name="message" rows="3" placeholder="Tell me about your project or opportunity..." required class="contact-input resize-none" data-testid="contact-input-message"></textarea>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="mt-5">
+                  <button type="submit" id="contact-submit-btn" class="contact-submit-btn" data-testid="contact-submit-btn">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    <span>Send Message</span>
+                  </button>
+                </div>
+                
+                <!-- Status Notification Banner -->
+                <div id="form-status" class="hidden mt-4 p-4 rounded-xl text-center text-sm font-semibold transition-all"></div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

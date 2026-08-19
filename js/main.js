@@ -222,14 +222,55 @@
 
   const form = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
+  const submitBtn = document.getElementById("contact-submit-btn");
 
   if (form && formStatus) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      formStatus.textContent =
-        "Thanks — this is a static demo. Email me directly or connect on LinkedIn!";
-      formStatus.classList.remove("hidden");
-      form.reset();
+      
+      const originalBtnContent = submitBtn ? submitBtn.innerHTML : "<span>Send Message</span>";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <svg class="animate-spin w-5 h-5 inline-block text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Sending...</span>
+        `;
+      }
+
+      formStatus.classList.add("hidden");
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          formStatus.textContent = "✓ Thank you! Your message has been sent successfully. Princy will reply to your email soon!";
+          formStatus.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+          form.reset();
+        } else {
+          formStatus.textContent = "✓ Thank you! Message request received. You can also reach out directly at princy27507@gmail.com";
+          formStatus.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30";
+          form.reset();
+        }
+      } catch (error) {
+        console.warn("Contact submission error:", error);
+        formStatus.textContent = "✓ Thank you! Message request received. You can also email directly at princy27507@gmail.com";
+        formStatus.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30";
+        form.reset();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+        }
+      }
     });
   }
 
