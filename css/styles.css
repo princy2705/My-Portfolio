@@ -1927,11 +1927,15 @@ html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   overflow-x: hidden;
   min-width: 0;
+  max-width: 100%;
+  position: relative;
+  overscroll-behavior-x: none;
 }
 
 *, *::before, *::after {
@@ -1973,6 +1977,7 @@ section {
   -ms-overflow-style: none;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
+  touch-action: pan-x;
 }
 
 .project-card {
@@ -2382,9 +2387,36 @@ img, svg, video, canvas, audio, iframe, embed, object {
    ============================================================ */
 #skills-tablist {
   max-width: 100%;
+  min-width: 0;
 }
 
 #skills-panel {
   max-width: 100%;
+  min-width: 0;
   overflow-x: hidden;
+}
+
+/* ============================================================
+   HARD STOP — flex children can silently force their parent wider
+   than the viewport unless explicitly told they're allowed to
+   shrink. This is the most common cause of "whole page shifts
+   sideways on mobile" bugs. Apply min-width:0 everywhere it matters.
+   ============================================================ */
+section,
+section > div,
+#skills,
+#skills > div,
+.max-w-6xl {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  #skills-tablist {
+    width: 100%;
+  }
 }
