@@ -1,4 +1,6 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -1970,6 +1972,7 @@ section {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overscroll-behavior-x: contain;
 }
 
 .project-card {
@@ -2372,4 +2375,16 @@ img, svg, video, canvas, audio, iframe, embed, object {
   #skills article[data-testid="skill-card-apis-soft"] {
     grid-column: span 1 !important;
   }
+}
+
+/* ============================================================
+   SKILL TABS — mobile scroll fix (prevents horizontal page shift)
+   ============================================================ */
+#skills-tablist {
+  max-width: 100%;
+}
+
+#skills-panel {
+  max-width: 100%;
+  overflow-x: hidden;
 }
