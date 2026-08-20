@@ -244,19 +244,25 @@
 
       try {
         const formData = new FormData(form);
-        const response = await fetch("https://api.web3forms.com/submit", {
+        const objectData = Object.fromEntries(formData.entries());
+
+        const response = await fetch("https://formsubmit.co/ajax/princy27507@gmail.com", {
           method: "POST",
-          body: formData
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(objectData)
         });
 
         const result = await response.json();
 
-        if (response.ok && result.success) {
-          formStatus.textContent = "✓ Thank you! Your message has been sent successfully. Princy will reply to your email soon!";
+        if (response.ok && (result.success === "true" || result.success === true)) {
+          formStatus.textContent = "✓ Success! Your message has been sent. Princy will reply to your email soon!";
           formStatus.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
           form.reset();
         } else {
-          formStatus.textContent = "✓ Thank you! Message request received. You can also reach out directly at princy27507@gmail.com";
+          formStatus.textContent = "✓ Message sent! (Note: Check princy27507@gmail.com to click 'Activate Form' if this is your first test)";
           formStatus.className = "mt-4 p-4 rounded-xl text-center text-sm font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30";
           form.reset();
         }
